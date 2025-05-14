@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
-
+// const { softDeletePlugin } = require('soft-delete-plugin-mongoose');
 
 
 const StudentSchema=new Schema({
@@ -20,10 +20,18 @@ const StudentSchema=new Schema({
     phone:{
         type:String,
         require:true
-    }
-
+    },
+    image:{
+        type:String,
+        require:true
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
+      },
 },
-{ timestamps: true })
 
+{ timestamps: true })
+// StudentSchema.plugin(softDeletePlugin);
 const StudentModel=mongoose.model('student',StudentSchema)
 module.exports=StudentModel
